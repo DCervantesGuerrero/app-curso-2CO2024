@@ -7,12 +7,13 @@ export const getTasks = async (req, res) => {
 };
 
 export const createTask = async (req, res) => {
-    const { title, description, date } = req.body;
+    const { title, description, date, project } = req.body;
 
     const newTask = new Task({
         title,
         description,
         date,
+        project,
         user: req.user.id
     });
 

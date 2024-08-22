@@ -24,6 +24,32 @@ export function ProjectProvider({ children }) {
         }
     }
 
+
+    const getProjectsForCombobox = async () => {
+        try {
+            const res = await getProjectsRequest();
+            console.log(res);
+            return res.data.map(project => ({
+                _id: project._id,
+                name: project.name
+            }));
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
+    }
+
+
+    const getONEProject = async (id) => {
+        try {
+            const res = await getProjectRequest(id); 
+        return res.data;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
     const getProjects = async () => {
         try {
             const res = await getProjectsRequest();
@@ -69,8 +95,10 @@ export function ProjectProvider({ children }) {
         Projects,
         createProject,
         getProjects,
+        getONEProject,
         deleteProject,
         getProject,
+        getProjectsForCombobox,
         updateProject
     }}>
         {children}

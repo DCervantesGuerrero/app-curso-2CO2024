@@ -44,3 +44,10 @@ export const deleteProject = async (req, res) => {
     }
  
 };
+
+export const getOneProject = async (req, res) => {
+    const projects = await project.findById(req.params.id);
+    if (!projects) return res.status(404).json({ message: "Task not found" });
+
+    res.json(projects);
+}

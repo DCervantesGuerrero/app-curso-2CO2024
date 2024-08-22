@@ -5,6 +5,7 @@ import TaskCard from "../components/TaskCard";
 
 function TasksPage(){
     const {getTasks, tasks} = useTasks();
+    
     useEffect(()=>{
         getTasks();
     }, [])
